@@ -1,0 +1,18 @@
+{
+  "name": "Phu Quoc 2026 — Ku Family",
+  "short_name": "Phu Quoc 2026",
+  "description": "Family trip itinerary — July 17–24, 2026",
+  "start_url": "/phu-quoc-trip/family-app/",
+  "display": "standalone",
+  "background_color": "#0a2d3d",
+  "theme_color": "#0a2d3d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "hero.jpg",
+      "sizes": "1200x800",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

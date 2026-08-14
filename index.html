@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Phu Quoc 2026">
+  <meta name="theme-color" content="#0D3B4C">
+  <meta name="description" content="Family trip itinerary — July 17–24, 2026">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="images/phuquoc_aerial_v2.png">
+  <title>Phu Quoc 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep-teal: #0D3B4C;
+      --aqua: #1A7A8A;
+      --teal-light: #e6f3f5;
+      --sand: #F5EDE0;
+      --coral: #D4836A;
+      --warm-white: #FDFAF6;
+      --charcoal: #2C2C2C;
+      --muted: #6B6B6B;
+      --success: #3a9e6e;
+      --warning: #d4873a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      line-height: 1.55;
+      -webkit-text-size-adjust: 100%;
+      min-height: 100vh;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 59, 76, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-inner {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      padding: 10px 16px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .nav-tab.active {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 60vh;
+      background: linear-gradient(160deg, #0D3B4C 0%, #1A7A8A 60%, #2A9D8F 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 48px 24px 40px;
+      position: relative;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/phuquoc_aerial_v2.png') center/cover no-repeat;
+      opacity: 0.22;
+    }
+    .cover-content { position: relative; z-index: 1; }
+    .cover-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+    }
+    .cover h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(56px, 18vw, 88px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 0.92;
+      letter-spacing: -2px;
+    }
+    .cover-dates {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: rgba(255,255,255,0.72);
+      margin-top: 12px;
+    }
+    .cover-pill-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .cover-pill {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 40px 20px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .section-header { margin-bottom: 24px; }
+    .section-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 400;
+      color: var(--deep-teal);
+      line-height: 1.1;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    /* ── FLIGHT CARDS ── */
+    .flight-card {
+      background: var(--sand);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .flight-badge {
+      position: absolute;
+      top: 0; right: 0;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 0 12px 0 8px;
+      color: #fff;
+    }
+    .badge-out { background: var(--coral); }
+    .badge-ret { background: var(--deep-teal); }
+    .flight-route {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .flight-code {
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--deep-teal);
+      line-height: 1;
+    }
+    .flight-code small {
+      display: block;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .flight-arrow { font-size: 20px; color: var(--coral); flex: 1; text-align: center; }
+    .flight-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .flight-meta-item {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 4px 0;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    .flight-meta-item strong { color: var(--deep-teal); font-weight: 500; display: block; }
+
+    /* ── STAY CARDS ── */
+    .stay-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.07);
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .stay-img { height: 160px; overflow: hidden; }
+    .stay-img img { width: 100%; height: 100%; object-fit: cover; }
+    .stay-body { padding: 18px 20px 22px; }
+    .stay-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .tag-sun { background: var(--deep-teal); }
+    .tag-moven { background: var(--aqua); }
+    .stay-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--deep-teal);
+      margin-bottom: 6px;
+    }
+    .stay-body p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .stay-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .stay-meta-pill {
+      font-size: 11px;
+      color: var(--aqua);
+      background: var(--teal-light);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* ── DAY CARDS ── */
+    .day-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.07);
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    }
+    .day-header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      background: var(--deep-teal);
+      color: #fff;
+    }
+    .day-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      font-weight: 300;
+      line-height: 1;
+      opacity: 0.9;
+    }
+    .day-num small {
+      display: block;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.55;
+      margin-top: 2px;
+    }
+    .day-title { flex: 1; }
+    .day-title h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 600;
+    }
+    .day-stay-badge {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 4px;
+      display: inline-block;
+      opacity: 0.75;
+    }
+    .day-body { padding: 0 20px 20px; }
+    .day-activity {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .day-activity:last-child { border-bottom: none; }
+    .time-block {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .time-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--coral);
+      min-width: 56px;
+      padding-top: 2px;
+    }
+    .time-content { flex: 1; }
+    .time-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--deep-teal);
+      margin-bottom: 4px;
+    }
+    .time-content p {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .rating-row {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+      align-items: center;
+    }
+    .stars { color: #f5a623; font-size: 11px; letter-spacing: 1px; }
+    .rating-src { font-size: 10px; color: var(--muted); opacity: 0.7; }
+    .open-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+    .open-badge.open { background: #e6f7ee; color: var(--success); }
+    .open-badge.verified { background: var(--teal-light); color: var(--aqua); }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10.5px;
+      color: var(--aqua);
+      background: var(--teal-light);
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin: 3px 4px 0 0;
+      font-weight: 500;
+    }
+    .tag.coral-tag { background: #fdf0eb; color: var(--coral); }
+
+    /* ── RESTAURANT CARDS ── */
+    .resto-grid { display: flex; flex-direction: column; gap: 12px; }
+    .resto-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.07);
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .resto-header {
+      display: flex;
+      gap: 14px;
+      padding: 16px 18px;
+      align-items: flex-start;
+    }
+    .resto-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--coral);
+      line-height: 1;
+      min-width: 32px;
+    }
+    .resto-info { flex: 1; }
+    .resto-info h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--deep-teal);
+      margin-bottom: 3px;
+    }
+    .resto-type { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+    .resto-review-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .review-score {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--deep-teal);
+    }
+    .stars { color: #f5a623; font-size: 11px; }
+    .review-count { font-size: 11px; color: var(--muted); }
+    .resto-hours {
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(0,0,0,0.03);
+      padding: 6px 10px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .resto-footer {
+      padding: 10px 18px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      border-top: 1px solid rgba(0,0,0,0.04);
+    }
+    .resto-phone { color: var(--aqua); font-weight: 500; text-decoration: none; }
+
+    /* ── TIPS GRID ── */
+    .tips-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .tips-col h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--deep-teal);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--sand);
+      letter-spacing: 0.5px;
+    }
+    .tips-col ul { list-style: none; }
+    .tips-col li {
+      font-size: 12.5px;
+      color: var(--muted);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      line-height: 1.5;
+    }
+
+    /* ── HONEST FLAGS ── */
+    .honest-banner {
+      background: linear-gradient(135deg, #fff8f0, #fdf3e8);
+      border: 1px solid #f0dcc5;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 0 20px 20px;
+    }
+    .honest-banner h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 10px;
+    }
+    .honest-banner li {
+      font-size: 12.5px;
+      color: var(--charcoal);
+      padding: 4px 0;
+      line-height: 1.5;
+    }
+
+    /* ── CLOSING ── */
+    .closing {
+      background: var(--deep-teal);
+      color: #fff;
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .closing h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .closing p {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── ADD TO HOME BANNER ── */
+    .ios-banner {
+      background: var(--deep-teal);
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .ios-banner strong { font-weight: 600; }
+    .ios-banner .close-btn {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0;
+      margin-left: auto;
+      line-height: 1;
+    }
+
+    /* ── MAP LINK ── */
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--aqua);
+      text-decoration: none;
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── WEATHER ── */
+    .weather-strip {
+      background: linear-gradient(135deg, var(--aqua), var(--deep-teal));
+      color: #fff;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .weather-strip h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .weather-strip p { font-size: 12px; color: rgba(255,255,255,0.72); line-height: 1.7; }
+    .weather-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 12px; }
+    .weather-pill {
+      font-size: 11px;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.12);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── BOOKING STRIP ── */
+    .booking-strip {
+      background: var(--sand);
+      padding: 24px 20px;
+    }
+    .booking-strip h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--deep-teal);
+      margin-bottom: 12px;
+    }
+    .booking-item {
+      background: #fff;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      font-size: 12.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .booking-item span { color: var(--muted); }
+    .booking-item strong { color: var(--deep-teal); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<!-- iOS Add to Home Screen Banner -->
+<div class="ios-banner" id="iosBanner">
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z" fill="white"/></svg>
+  <div>
+    <strong>Save to Home Screen</strong> for offline access — tap the share icon <strong>→</strong> "Add to Home Screen"
+  </div>
+  <button class="close-btn" onclick="document.getElementById('iosBanner').style.display=\'none\'">&times;</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#overview" class="nav-tab active" onclick="setActive(event)">Overview</a>
+    <a href="#days" class="nav-tab" onclick="setActive(event)">Days</a>
+    <a href="#food" class="nav-tab" onclick="setActive(event)">Food</a>
+    <a href="#book" class="nav-tab" onclick="setActive(event)">Book</a>
+    <a href="#tips" class="nav-tab" onclick="setActive(event)">Tips</a>
+    <a href="#snorkel" class="nav-tab" onclick="setActive(event)">Snorkel</a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<div class="cover" id="overview">
+  <div class="cover-content">
+    <div class="cover-eyebrow">A Family Journey · 4 Adults · 3 Kids</div>
+    <h1>Phu Quoc</h1>
+    <div class="cover-dates">July 17 — 24, 2026 · 8 Days</div>
+    <div class="cover-pill-row">
+      <span class="cover-pill">Sun Tropical Village</span>
+      <span class="cover-pill">Movenpick</span>
+      <span class="cover-pill">VinSafari</span>
+      <span class="cover-pill">Kiss of the Stars</span>
+      <span class="cover-pill">Hon Thom Cable Car</span>
+    </div>
+  </div>
+</div>
+
+<!-- WEATHER -->
+<div class="weather-strip">
+  <h3>July Weather: Warm, Humid & Mostly Sunny</h3>
+  <p>Sea: 30°C — perfect for swimming. Brief afternoon rain on most days (warm, not cold). Off-peak pricing, fewer crowds, better rates.</p>
+  <div class="weather-pills">
+    <span class="weather-pill">☀️ 5hrs sunshine/day</span>
+    <span class="weather-pill">🌧️ Brief afternoon rain</span>
+    <span class="weather-pill">🌊 30°C sea temp</span>
+    <span class="weather-pill">💨 Slightly windy</span>
+  </div>
+</div>
+
+<!-- FLIGHTS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Getting There & Back</div>
+    <div class="section-title">Flights</div>
+  </div>
+
+  <div class="flight-card">
+    <div class="flight-badge badge-out">OUTBOUND</div>
+    <div class="flight-route">
+      <div class="flight-code"><small>HKG</small>16:10</div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-code"><small>PQC</small>18:05</div>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">HK Express · UO596 · Jul 17 · Terminal 2</div>
+    <div class="flight-meta">
+      <div class="flight-meta-item"><strong>HKG 16:10</strong>Depart</div>
+      <div class="flight-meta-item"><strong>PQC 18:05</strong>Arrive</div>
+      <div class="flight-meta-item"><strong>1h 55min</strong>Duration</div>
+      <div class="flight-meta-item"><strong>Lite fare</strong>Cabin bag only</div>
+    </div>
+  </div>
+
+  <div class="flight-card">
+    <div class="flight-badge badge-ret">RETURN</div>
+    <div class="flight-route">
+      <div class="flight-code"><small>PQC</small>10:40</div>
+      <div class="flight-arrow">→</div>
+      <div class="flight-code"><small>HKG</small>14:50</div>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">HK Express · UO599 · Jul 24 · Terminal 1</div>
+    <div class="flight-meta">
+      <div class="flight-meta-item"><strong>Be at PQC 8:30am</strong>Check-in opens 90min prior</div>
+      <div class="flight-meta-item"><strong>14:50</strong>Arrive HKG T1</div>
+      <div class="flight-meta-item"><strong>1h 55min</strong>Duration</div>
+      <div class="flight-meta-item"><strong>Check-out 10am</strong>From Movenpick</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAYS -->
+<div class="section" style="background:var(--sand);padding:40px 20px;">
+  <div class="section-header">
+    <div class="section-eyebrow">Where You're Staying</div>
+    <div class="section-title">Two Resorts</div>
+    <div class="section-sub">Nights 1–4 at Sun Tropical · Nights 4–7 at Movenpick</div>
+  </div>
+
+  <div class="stay-card">
+    <div class="stay-img"><img src="images/sun_tropical_new.png" alt="Sun Tropical Village"></div>
+    <div class="stay-body">
+      <span class="stay-tag tag-sun">Nights 1–4 · Jul 17–21</span>
+      <h3>Sun Tropical Village</h3>
+      <p>5-min walk to Bai Kem — one of the world's most beautiful beaches. Near Sunset Town, JW Marriott, New World, and Regent dining. Villa P909.</p>
+      <div class="stay-meta">
+        <span class="stay-meta-pill">P909 · Multi-bedroom villa</span>
+        <span class="stay-meta-pill">5 min to Bai Kem Beach</span>
+        <span class="stay-meta-pill">Check-out Jul 21</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stay-card">
+    <div class="stay-img"><img src="images/movenpick_villa_new.png" alt="Movenpick Villas"></div>
+    <div class="stay-body">
+      <span class="stay-tag tag-moven">Nights 4–7 · Jul 21–24</span>
+      <h3>Mövenpick Villas & Residences</h3>
+      <p>Ong Lang Beach — 4-min walk to sand. Private pool villa, kitchenette, kids club, chocolate hour. 5 min to Grand World. Safari is 30–40 min away.</p>
+      <div class="stay-meta">
+        <span class="stay-meta-pill">Private pool villa</span>
+        <span class="stay-meta-pill">Ong Lang Beach 4 min</span>
+        <span class="stay-meta-pill">Safari 30–40 min</span>
+        <span class="stay-meta-pill">Check-out Jul 24</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HONEST FLAGS -->
+<div class="honest-banner">
+  <h4>⚠️ Honest Flags on the Itinerary</h4>
+  <ul style="padding-left:16px;">
+    <li><strong>VinWonder removed.</strong> It's a full-day park on its own — combining it with Safari in one day with 5 kids aged 5–10 is too much. Safari alone from Movenpick is the right call.</li>
+    <li><strong>Safari moved to Day 6 (Movenpick stay).</strong> It's 30–40 min from Movenpick vs. 70+ min from Sun Tropical. Animals are technically more active in the morning but afternoon Safari is still excellent.</li>
+    <li><strong>9–10am departures throughout.</strong> No one is eating breakfast at 7:30am on holiday with 5 kids. All activities re-timed around realistic departures.</li>
+    <li><strong>Island hopping removed.</strong> July = rougher seas, windier conditions. The boat tours to distant islands (Mong Tay, Hon Dua) are not ideal this time of year. The cable car + Aquatopia is a better use of the day.</li>
+  </ul>
+</div>
+
+<!-- BOOKING STRIP -->
+<div class="booking-strip" id="book">
+  <h4>📋 Book These Before You Go</h4>
+  <div class="booking-item">
+    <div>
+      <strong>Kiss of the Stars × 9</strong><br><span>2-person combo = better discount (Tixgo.vn)</span>
+    </div>
+    <strong style="color:var(--coral);font-size:12px;">Tixgo.vn</strong>
+  </div>
+  <div class="booking-item">
+    <div>
+      <strong>Awaken Sea × 9</strong><br><span>100k/vé · Sunset Town (Tixgo.vn)</span>
+    </div>
+    <strong style="color:var(--coral);font-size:12px;">Tixgo.vn</strong>
+  </div>
+  <div class="booking-item">
+    <div>
+      <strong>Hon Thom Cable Car × 9</strong><br><span>Morning slot = best weather</span>
+    </div>
+    <strong style="color:var(--coral);font-size:12px;">Tixgo.vn</strong>
+  </div>
+  <div class="booking-item">
+    <div>
+      <strong>Ms. Ngoan</strong><br><span>Scooter/car hire · +84 908 954 195</span>
+    </div>
+    <strong style="color:var(--coral);font-size:12px;">WhatsApp</strong>
+  </div>
+  <div class="booking-item">
+    <div>
+      <strong>Cua Can River Kayak Tour</strong><br><span>Half-day · Pickup from Movenpick · Klook or TripAdvisor</span>
+    </div>
+    <strong style="color:var(--coral);font-size:12px;">Klook</strong>
+  </div>
+  <div class="booking-item">
+    <div>
+      <strong>Ganh Dau Snorkel (guided)</strong><br><span>Speedboat · OnBird or Pelago · Family tours</span>
+    </div>
+    <strong style="color:var(--coral);font-size:12px;">Pelago</strong>
+  </div>
+</div>
+
+<!-- SNORKEL & KAYAK SECTION -->
+<div class="section" id="snorkel" style="background:var(--sand);">
+  <div class="section-header">
+    <div class="section-eyebrow">Water Activities</div>
+    <div class="section-title">Snorkeling & Kayaking</div>
+    <div class="section-sub">July sea conditions: calm on north coast (Ganh Dau), Cua Can River is sheltered. Skip distant island snorkel tours — Mong Tay and Hon Dua have rougher conditions in summer.</div>
+  </div>
+
+  <div class="resto-grid">
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">🤿</div>
+        <div class="resto-info">
+          <h4>Ganh Dau — Crystal Reef Snorkeling</h4>
+          <div class="resto-type">🌊 Snorkeling · North Phu Quoc · Best for families</div>
+          <div class="resto-review-row">
+            <span class="stars">★★★★★</span>
+            <span class="review-count">· #1 family snorkel spot in Phu Quoc</span>
+            <span class="open-badge verified">✓ Operating</span>
+          </div>
+          <div class="resto-hours">📍 Ganh Dau, North Phu Quoc · ~30–40 min from Movenpick</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Best snorkeling for your group.</strong> Calm, clear, shallow coral reefs — perfect for kids aged 5–10. Vibrant coral gardens, sea fans, tropical fish. The north coast is sheltered by the island, so July's rougher seas don't affect it as much. Included as a morning activity on Day 6 before Safari. Bring reef-safe sunscreen and snorkel masks (or rent on site for ~100k VND/person). Book a speedboat snorkel tour via <strong>OnBird or Pelago</strong> for the full experience with a guide, or DIY at Ganh Dau beach with rented gear.
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Ganh+Dau+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">🛶</div>
+        <div class="resto-info">
+          <h4>Cua Can River Kayaking</h4>
+          <div class="resto-type">🛶 Kayaking · Jungle river · North Phu Quoc · Ages 5+</div>
+          <div class="resto-review-row">
+            <span class="stars">★★★★★</span>
+            <span class="review-count">· TripAdvisor · Top 10 Cua Can activity · 5-star reviews</span>
+            <span class="open-badge verified">✓ Operating · Book on Klook or TripAdvisor</span>
+          </div>
+          <div class="resto-hours">📍 Cua Can River, North Phu Quoc · Pickup from Movenpick area</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Full morning adventure (Day 7).</strong> Paddle through dense jungle mangroves, kingfishers and eagles overhead, totally calm water. Kids aged 5+ can do tandem kayak with a parent. English-speaking guides. Hotel pickup from Movenpick. Lunch included. <strong>Book via Klook or TripAdvisor</strong> — half-day tour with transport. Perfect for active kids who want something different from the beach.
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Cua+Can+River+Phu+Quoc+Kayaking" target="_blank">📍 Open in Maps</a>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">🏖️</div>
+        <div class="resto-info">
+          <h4>Bãi Khem Beach — Kayak & Water Sports</h4>
+          <div class="resto-type">🏄 Kayak · Jet ski · Banana boat · South Phu Quoc</div>
+          <div class="resto-review-row">
+            <span class="rating-src">Right on Bãi Khem Beach · Rental stands on the sand</span>
+            <span class="open-badge verified">✓ Operating · Day 2 afternoon</span>
+          </div>
+          <div class="resto-hours">📍 Bãi Khem Beach · 5 min from Sun Tropical Village · ~100k–200k VND/person</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Already in your itinerary (Day 2 afternoon).</strong> Rental stands right on the beach — no booking needed, just show up and negotiate. Kayak rental ~100k–200k VND/person/hour. <strong>Kids aged 5–10 love the banana boat</strong> — guaranteed laughter. Jet ski for older kids + adults. Sabrina's Water Sports (sabrina-rental-phuquoc.com) has a full range including waterproof phone bags ($2 rent). Kids 5+ can do tandem kayak with a parent.
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Bai+Khem+Beach+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">🦐</div>
+        <div class="resto-info">
+          <h4>Ong Lang Beach — Shore Snorkeling + Paddleboard</h4>
+          <div class="resto-type">🤿 Snorkeling · Paddleboard · South-west coast</div>
+          <div class="resto-review-row">
+            <span class="rating-src">Walkable from Movenpick · Free to enter beach</span>
+            <span class="open-badge verified">✓ Operating · Low-key activity</span>
+          </div>
+          <div class="resto-hours">📍 Ong Lang Beach · 4 min walk from Movenpick</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Low-key option for Movenpick mornings (Days 5 & 7).</strong> Snorkel straight from the shore — decent coral near the rocks at either end of the beach. Paddleboards sometimes available from beachfront stalls. Water is calm in the mornings before the afternoon wind picks up. Bring your own snorkel masks or buy a cheap set in Duong Dong town. Gear rental ~100k VND/person.
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Ong+Lang+Beach+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff3e0;border:1px solid #f0dcc5;border-radius:10px;padding:16px 20px;margin-top:20px;">
+    <h4 style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">Honest Take on July Conditions</h4>
+    <p style="font-size:12.5px;color:var(--charcoal);line-height:1.65;">
+      <strong>North coast (Ganh Dau + Cua Can):</strong> Sheltered by the island — calmer water than the south. Best snorkel spot in July.<br>
+      <strong>Hon Thom Island (Aquatopia day):</strong> The beach there has calmer water than Bai Kem — worth a snorkel if you have time.<br>
+      <strong>Skip distant island tours (Mong Tay, Hon Dua):</strong> July's wind and rougher seas make the 45–60 min boat rides unpleasant, and snorkel quality drops with choppy water.<br>
+      <strong>Gear:</strong> Bring snorkel masks if you have them. Rent on-site for ~100k VND/person/day. Kids will need properly fitted masks — buy in HK or at WinMart+ on island.
+    </p>
+  </div>
+</div>
+
+<!-- DAY BY DAY -->
+<div class="section" id="days">
+  <div class="section-header">
+    <div class="section-eyebrow">The Plan</div>
+    <div class="section-title">8-Day Itinerary</div>
+    <div class="section-sub">All activities depart villa 9–10am. Safari = Day 6 from Movenpick.</div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">01<small>JUL 17</small></div>
+      <div class="day-title">
+        <h3>Arrival — Sun Tropical Village</h3>
+        <span class="day-stay-badge" style="background:rgba(255,255,255,0.15);">🏡 P909 · Night 1 of 4</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Arrive<br>18:05</div>
+          <div class="time-content">
+            <h4>HK Express UO596 lands PQC</h4>
+            <p>16:10 dep HKG T2 · Arrive 18:05 PQC. Pre-book Grab × 2 or minivan. ~35 min to Sun Tropical Village.</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Eve<br>~19:30</div>
+          <div class="time-content">
+            <h4>Dinner — Draft Beer Bãi Khem</h4>
+            <p>5-min taxi from villa. Right on the beach, great seafood, diverse menu. Open daily.</p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Draft+Beer+Bai+Khem+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag coral-tag">⭐ Friend recommended</span>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Night</div>
+          <div class="time-content">
+            <h4>Rest — Early Sleep</h4>
+            <p>Everyone exhausted. Villa pool or beach if energy allows. Early start tomorrow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">02<small>JUL 18</small></div>
+      <div class="day-title">
+        <h3>Bãi Khem Beach + Water Sports</h3>
+        <span class="day-stay-badge" style="background:rgba(255,255,255,0.15);">🏡 P909 · Night 2 of 4</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">10am</div>
+          <div class="time-content">
+            <h4>Slow villa breakfast</h4>
+            <p>No rush. 9–10am is the realistic departure time for this group.</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">10am</div>
+          <div class="time-content">
+            <h4>Bãi Khem Beach Morning</h4>
+            <p>5-min walk from villa. One of the world's most beautiful beaches — white sand, clear water, calm for kids. Swim, sandcastle, paddle.</p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Bai+Khem+Beach+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag">🏖️ Local beach</span>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Lunch<br>12:30</div>
+          <div class="time-content">
+            <h4>Cơm niêu Việt Xưa</h4>
+            <p>Tổ 8 Đường Cao Tốc, Khu Phố 6, An Thới — right outside your villa gate. Family com (rice dishes), local, cheap, genuinely good. Delivery available: 0971 981 234.</p>
+            <div class="rating-row">
+              <span class="stars">★★★★☆</span>
+              <span class="review-score">4.3</span>
+              <span class="rating-src">· Wanderlog · ~350 reviews</span>
+              <span class="open-badge verified">✓ Verified open</span>
+            </div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Com+nieu+Viet+Xua+An+Thoi+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag coral-tag">⭐ Friend recommended</span>
+        <span class="tag">📞 Delivery available</span>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">2pm</div>
+          <div class="time-content">
+            <h4>Water Sports at Bãi Khem</h4>
+            <p>Jet ski, kayak, banana boat — rental stands right on the beach. Negotiate on the spot. Kids aged 5–10 will love this. Banana boat = guaranteed laughter.</p>
+            <span class="tag">🏄 Jet ski · Kayak · Banana boat</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Dinner<br>18:30</div>
+          <div class="time-content">
+            <h4>Draft Beer Bãi Khem</h4>
+            <p>Seafood, beach view, cold drinks, relaxed atmosphere. The friend specifically recommended this for dinner. Multiple other beachfront options along Bãi Khem if you want to wander.</p>
+            <div class="rating-row">
+              <span class="stars">★★★★☆</span>
+              <span class="review-score">3.6</span>
+              <span class="rating-src">· Restaurant Guru · 428 reviews</span>
+              <span class="open-badge open">Open daily</span>
+            </div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Draft+Beer+Bai+Khem+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag coral-tag">⭐ Friend recommended</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">03<small>JUL 19</small></div>
+      <div class="day-title">
+        <h3>Hon Thom Cable Car + Aquatopia</h3>
+        <span class="day-stay-badge" style="background:rgba(255,255,255,0.15);">🏡 P909 · Night 3 of 4</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">10am</div>
+          <div class="time-content">
+            <h4>Slow breakfast + depart villa ~10am</h4>
+            <p>Private car to An Thới Cable Car Station (~25 min from villa).</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">10:30am</div>
+          <div class="time-content">
+            <h4>Hon Thom Cable Car</h4>
+            <p>World's longest sea-crossing cable car — 7,899m over open ocean. 20 minutes of panoramic ocean views. Bring a light jacket — breezy and AC. Book morning slot for best weather.</p>
+            <span class="tag">🚠 World's longest overwater cable car</span>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hon+Thom+Cable+Car+Station+Phu+Quoc" target="_blank">📍 An Thới Station · Open in Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">11am–3pm</div>
+          <div class="time-content">
+            <h4>Aquatopia Water Park (Hon Thom)</h4>
+            <p>Slides, splash zones, wave pools. Perfect for ages 5–10. Outdoor rides (Exotica Theme Park) for the older kids. Lunch at island food stalls.</p>
+            <span class="tag">🎢 Slides · Lazy river · Splash zones</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">3pm</div>
+          <div class="time-content">
+            <h4>Santo Port / Bãi Trường</h4>
+            <p>Walk the Santorini-style Mediterranean streets. Ice cream, photos, browse the shops. This is a highlight — don't skip it on the way back.</p>
+            <span class="tag">📸 Instagram photos · Café</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Eve<br>17:00</div>
+          <div class="time-content">
+            <h4>Awaken Sea Show — Kiss Bridge</h4>
+            <p>5pm sunset water show on Kiss Bridge. 100k/vé. Buy via Tixgo.vn (cheaper than door). Show plays at golden hour — genuinely impressive.</p>
+            <span class="tag coral-tag">🎭 Via Tixgo.vn · 100k/vé</span>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kiss+Bridge+Sunset+Town+Phu+Quoc" target="_blank">📍 Kiss Bridge · Open in Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Dinner<br>~18:30</div>
+          <div class="time-content">
+            <h4>Vui Fest Bazaar</h4>
+            <p>Vietnam's first creative seaside night market in Sunset Town. 4pm–midnight daily. Street food to upscale options. Perfect after the Kiss Bridge walk.</p>
+            <div class="rating-row">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-src">· Sun Group · 40+ stalls</span>
+              <span class="open-badge open">Open 4pm–midnight</span>
+            </div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Vui+Fest+Bazaar+Sunset+Town+Phu+Quoc" target="_blank">📍 Sunset Town · Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag coral-tag">⭐ Friend recommended</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">04<small>JUL 20</small></div>
+      <div class="day-title">
+        <h3>Local Food + Kiss Bridge + Kiss of the Stars</h3>
+        <span class="day-stay-badge" style="background:rgba(255,255,255,0.15);">🏡 P909 · Night 4 of 4</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">10am</div>
+          <div class="time-content">
+            <h4>Slow villa breakfast</h4>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Lunch<br>11:30</div>
+          <div class="time-content">
+            <h4>Bé Ghẹ 2 — An Thới</h4>
+            <p>Khu Phố 6, An Thới · Authentic local seafood. The friend specifically recommended this as a local experience — no frills, fresh, and genuinely good. 0342 756 666.</p>
+            <div class="rating-row">
+              <span class="rating-src">📍 Local seafood · No English menu (bring Google Translate)</span>
+              <span class="open-badge verified">✓ Open</span>
+            </div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Be+Ghe+2+An+Thoi+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag coral-tag">⭐ Friend recommended</span>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Afternoon</div>
+          <div class="time-content">
+            <h4>Villa pool + Siesta</h4>
+            <p>Escape the midday heat. Pool at the villa. Everyone rests before the big show tonight.</p>
+            <span class="tag">🏊 Villa pool</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">4pm</div>
+          <div class="time-content">
+            <h4>Kiss Bridge + Sunset Town walk</h4>
+            <p>Late afternoon stroll. Mediterranean streets, ice cream, sunset at the bridge. The 5pm golden hour light is perfect.</p>
+            <span class="tag">🌅 Best sunset view on the island</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Dinner<br>~18:30</div>
+          <div class="time-content">
+            <h4>Ocean Club — Regent Phu Quoc</h4>
+            <p>Balearic-inspired beachfront venue on Bãi Trường. Mediterranean cuisine, cocktails, stunning infinity pool + ocean views. ~200k VND taxi each way. TableCheck reservation recommended.</p>
+            <div class="rating-row">
+              <span class="stars">★★★★★</span>
+              <span class="review-score">5.0</span>
+              <span class="rating-src">· Trip.com · #23 top restaurant Phu Quoc</span>
+              <span class="open-badge open">Open daily</span>
+            </div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Ocean+Club+Regent+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag coral-tag">⭐ Friend recommended</span>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Show<br>21:00</div>
+          <div class="time-content">
+            <h4>Kiss of the Stars — 9pm show</h4>
+            <p>Main event of the trip. Outdoor water + light show on Kiss Bridge. Buy 2-person combo for better discount via Tixgo.vn. Arrive 20:30 for decent seats — general admission only.</p>
+            <span class="tag coral-tag">🎭 Must-see · Buy via Tixgo.vn</span>
+            <span class="tag">📍 Kiss Bridge, Sunset Town</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card">
+    <div class="day-header" style="background: var(--aqua);">
+      <div class="day-num">05<small>JUL 21</small></div>
+      <div class="day-title">
+        <h3>Move to Movenpick + Settle In</h3>
+        <span class="day-stay-badge" style="background:rgba(255,255,255,0.2);">🏡 Movenpick · Night 1 of 3</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">10am</div>
+          <div class="time-content">
+            <h4>Final Bai Kem Beach morning</h4>
+            <p>Last swim at one of the world's most beautiful beaches. 5-min walk from villa.</p>
+            <span class="tag">🏖️ Don't skip it</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">11am</div>
+          <div class="time-content">
+            <h4>Check out Sun Tropical · Move to Movenpick</h4>
+            <p>~10–15 min by Grab or pre-arranged car. Drop bags, explore the villa.</p>
+            <span class="tag">🛏️ Private pool villa</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Lunch<br>12:30</div>
+          <div class="time-content">
+            <h4>Lang Chai Restaurant — Movenpick</h4>
+            <p>Inside Movenpick Villas. Vietnamese + international cuisine. High quality, zero travel needed. TripAdvisor 4.6/5 · 3,227 reviews.</p>
+            <div class="rating-row">
+              <span class="stars">★★★★½</span>
+              <span class="review-score">4.6</span>
+              <span class="rating-src">· TripAdvisor · 3,227 reviews</span>
+              <span class="open-badge open">Open daily</span>
+            </div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Lang+Chai+Restaurant+Movenpick+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag">🍽️ On-site · No travel</span>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">2pm</div>
+          <div class="time-content">
+            <h4>Movenpick Pool + Ong Lang Beach</h4>
+            <p>Settle into the villa. Kids swim, adults decompress. Beach is 4-min walk from your villa.</p>
+            <span class="tag">🏊 Private pool · 🏖️ Ong Lang Beach</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Dinner<br>~19:00</div>
+          <div class="time-content">
+            <h4>Aura Beach Club — Happy Hour 5–7pm</h4>
+            <p>Ong Lang Beach. Tapas, cocktails, live music, sunset views. TripAdvisor 4.9/5 — remarkably high for any restaurant. Part of the Movenpick/Accor ecosystem. Walkable from your villa.</p>
+            <div class="rating-row">
+              <span class="stars">★★★★★</span>
+              <span class="review-score">4.9</span>
+              <span class="rating-src">· TripAdvisor · 15 reviews</span>
+              <span class="open-badge open">Happy Hour 5–7pm</span>
+            </div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Aura+Beach+Club+Ong+Lang+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag">🍹 Best sunset cocktails on Ong Lang</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card">
+    <div class="day-header" style="background: var(--aqua);">
+      <div class="day-num">06<small>JUL 22</small></div>
+      <div class="day-title">
+        <h3>Ganh Dau Snorkeling + VinSafari</h3>
+        <span class="day-stay-badge" style="background:rgba(255,255,255,0.2);">🏡 Movenpick · Night 2 of 3</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">10am</div>
+          <div class="time-content">
+            <h4>Slow breakfast + depart villa</h4>
+            <p>Ms. Ngoan's car is already arranged for the day. Head north to Ganh Dau first (~30–40 min from Movenpick), then to Safari.</p>
+            <span class="tag">🚗 Arrange night before (+84 908 954 195)</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">9:40am–12pm</div>
+          <div class="time-content">
+            <h4>Ganh Dau Snorkeling — Crystal Reef</h4>
+            <p>North Phu Quoc's best snorkeling. Calm, clear, shallow coral reefs — perfect for kids. Vibrant coral, sea fans, schools of tropical fish. The north coast is sheltered so water stays calm even in July. Bring reef-safe sunscreen.</p>
+            <div class="rating-row">
+              <span class="stars">★★★★★</span>
+              <span class="rating-src">· #1 family snorkeling spot in Phu Quoc</span>
+              <span class="open-badge verified">✓ Operating</span>
+            </div>
+            <span class="tag">🤿 Shallow reef · Crystal clear water</span>
+            <span class="tag">👨‍👩‍👧‍👦 Kid-safe · Calm bay</span>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Ganh+Dau+Phu+Quoc" target="_blank">📍 Ganh Dau · Open in Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">12pm</div>
+          <div class="time-content">
+            <h4>Lunch — Peppercorn Beach Resort (Ganh Dau area)</h4>
+            <p>Right next to the snorkeling area. Beachfront, grilled seafood, pepper crab. Very convenient — you're already there. AC restaurant with beautiful sea views.</p>
+            <span class="tag">🦐 Grilled seafood · Beachfront</span>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Peppercorn+Beach+Resort+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">1pm–5pm</div>
+          <div class="time-content">
+            <h4>VinSafari Phu Quoc</h4>
+            <p>Open-range safari tram — tigers, elephants, lions up close. Walking zones + petting area for younger kids. All 5 kids will lose their minds. Well-shaded, AC restaurants on site. 30 min from Ganh Dau to Safari.</p>
+            <span class="tag">🦁 Open 8am–5pm · Afternoon = still excellent</span>
+            <span class="tag">🦋 Safari tram · Petting zoo</span>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=VinSafari+Phu+Quoc" target="_blank">📍 VinSafari · Open in Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">5pm</div>
+          <div class="time-content">
+            <h4>Return to Movenpick</h4>
+            <p>~35 min drive. Everyone tired and happy. Pool / beach walk before dinner.</p>
+            <span class="tag">🏊 Recovery · Beach walk</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Dinner<br>~19:00</div>
+          <div class="time-content">
+            <h4>Grand World Night Market</h4>
+            <p>5 min from Movenpick. Opens 5pm. Newer, cleaner than Bach Dang. Very easy evening — no long drive needed. Great for tired kids after a big day.</p>
+            <span class="tag">🌙 Opens 5pm · Near Movenpick</span>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Grand+World+Phu+Quoc+Night+Market" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day-card">
+    <div class="day-header" style="background: var(--aqua);">
+      <div class="day-num">07<small>JUL 23</small></div>
+      <div class="day-title">
+        <h3>Cua Can River Kayaking + Beach Farewell</h3>
+        <span class="day-stay-badge" style="background:rgba(255,255,255,0.2);">🏡 Movenpick · Night 3 of 3</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">10am</div>
+          <div class="time-content">
+            <h4>Cua Can River Kayaking — Full Morning Adventure</h4>
+            <p>Paddle through the jungle-lined Cua Can River. Calm water, beautiful mangroves, eagles and kingfishers overhead. TripAdvisor 5-star reviews for family-friendly tours. Kids aged 5+ can do tandem kayak with a parent. English-speaking guides. Hotel pickup from Movenpick area.</p>
+            <div class="rating-row">
+              <span class="stars">★★★★★</span>
+              <span class="rating-src">· TripAdvisor · Top 10 Cua Can activity</span>
+              <span class="open-badge verified">✓ Operating · Book via Klook or TripAdvisor</span>
+            </div>
+            <span class="tag">🛶 Tandem kayak · Ages 5+ welcome</span>
+            <span class="tag">🌿 Jungle river · Wildlife spotting</span>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Cua+Can+River+Phu+Quoc+Kayaking" target="_blank">📍 Cua Can River · Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag coral-tag">⭐ Half-day tour · Pickup from Movenpick</span>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">12:30</div>
+          <div class="time-content">
+            <h4>Lunch — Lang Chai Restaurant (Movenpick)</h4>
+            <p>Back from the kayak by midday. Eat at Lang Chai — no travel needed, AC, kids-friendly. TripAdvisor 4.6/5.</p>
+            <span class="tag">🍜 On-site · No travel</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">2pm</div>
+          <div class="time-content">
+            <h4>Movenpick Pool + Ong Lang Beach — farewell session</h4>
+            <p>Final swim in your private pool. Pack in the afternoon. Sunset walk on Ong Lang Beach — last one.</p>
+            <span class="tag">🏊 Private villa pool</span>
+            <span class="tag">🏖️ Last Ong Lang sunset</span>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">Dinner<br>~19:00</div>
+          <div class="time-content">
+            <h4>Mango Bay Restaurant — Farewell Dinner</h4>
+            <p>Ong Lang Beach. Organic, sustainably sourced Vietnamese cuisine. Upscale eco-resort setting. Beautiful outdoor seating. TripAdvisor 4.4/5 · 1,554 reviews. Dress up — last night of the trip.</p>
+            <div class="rating-row">
+              <span class="stars">★★★★½</span>
+              <span class="review-score">4.4</span>
+              <span class="rating-src">· TripAdvisor · 1,554 reviews</span>
+              <span class="open-badge open">Open daily 10am–10pm</span>
+            </div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Mango+Bay+Restaurant+Ong+Lang+Phu+Quoc" target="_blank">📍 Open in Maps</a>
+          </div>
+        </div>
+        <span class="tag">🌟 Farewell dinner · Worth dressing up</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 8 -->
+  <div class="day-card">
+    <div class="day-header" style="background: #555;">
+      <div class="day-num">08<small>JUL 24</small></div>
+      <div class="day-title">
+        <h3>Departure — Fly Home</h3>
+        <span class="day-stay-badge" style="background:rgba(255,255,255,0.15);">✈️ UO599 · 10:40 depart PQC</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">9am</div>
+          <div class="time-content">
+            <h4>Slow breakfast + check out by 10am</h4>
+            <p>Pre-book Grab or Ms. Ngoan for airport transfer. PQC is ~20–25 min from Movenpick.</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-activity">
+        <div class="time-block">
+          <div class="time-label">8:30am</div>
+          <div class="time-content">
+            <h4>Be at PQC airport — international check-in</h4>
+            <p>UO599 departs 10:40. Allow 90 min for international check-in. Buy fish sauce and black pepper at Duty Free if time allows.</p>
+            <span class="tag">✈️ Arrive PQC 8:30am</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOD SECTION -->
+<div class="section" id="food" style="background:var(--sand);">
+  <div class="section-header">
+    <div class="section-eyebrow">Researched & Verified</div>
+    <div class="section-title">Where to Eat</div>
+    <div class="section-sub">All ratings sourced from TripAdvisor, Wanderlog, Restaurant Guru (July 2026). Restaurants marked ✓ Verified Open are confirmed operating.</div>
+  </div>
+
+  <!-- Near Sun Tropical -->
+  <h4 style="font-size:13px;font-weight:600;color:var(--deep-teal);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #ddd;">
+    🍽️ Sun Tropical Area (Jul 17–21) — 5–20 min from P909
+  </h4>
+  <div class="resto-grid">
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">1</div>
+        <div class="resto-info">
+          <h4>Cơm niêu Việt Xưa</h4>
+          <div class="resto-type">🍚 Family Vietnamese · Right outside villa gate</div>
+          <div class="resto-review-row">
+            <span class="review-score">4.3</span>
+            <span class="stars">★★★★☆</span>
+            <span class="review-count">· ~350 reviews · Wanderlog</span>
+          </div>
+          <div class="resto-hours">📍 Tổ 8 Đường Cao Tốc, Khu Phố 6, An Thới · Open daily</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>⭐ Friend recommended.</strong> Delivery to villa: <a href="tel:+84971981234" class="resto-phone">0971 981 234</a>. Family com (clay pot rice), grilled dishes. Meal for 5 under VND 1M — reviewers love it. Note: their specialty <em>cơm đập</em> needs to be ordered a few hours ahead.
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">2</div>
+        <div class="resto-info">
+          <h4>Draft Beer Bãi Khem</h4>
+          <div class="resto-type">🦐 Seafood · Beachfront · Sea view</div>
+          <div class="resto-review-row">
+            <span class="review-score">3.6</span>
+            <span class="stars">★★★★☆</span>
+            <span class="review-count">· 428 reviews · Restaurant Guru</span>
+          </div>
+          <div class="resto-hours">📍 Bãi Khem Beach · ☎ 0297 3703 679 · Open daily</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>⭐ Friend recommended.</strong> Right on the beach, diverse seafood menu, cold beer. The beachfront location is the draw — come for sunset dinner. Several other good beachfront restaurants line Bãi Khem if this one is full.
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">3</div>
+        <div class="resto-info">
+          <h4>Bé Ghẹ 2</h4>
+          <div class="resto-type">🦀 Local seafood · No-frills authentic</div>
+          <div class="resto-review-row">
+            <span class="review-score">—</span>
+            <span class="rating-src">Local specialist · Vietnamese-language reviews dominant</span>
+          </div>
+          <div class="resto-hours">📍 Khu Phố 6, An Thới · ☎ 0342 756 666 · Open daily</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>⭐ Friend recommended.</strong> Authentic local seafood, no English menu. Bring Google Translate or point-and-order. The friend called it a "trải nghiệm địa phương" — a genuine local experience. Worth going out of your way for.
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">4</div>
+        <div class="resto-info">
+          <h4>Vui Fest Bazaar</h4>
+          <div class="resto-type">🌙 Night market · Sunset Town · 40+ stalls</div>
+          <div class="resto-review-row">
+            <span class="stars">★★★★☆</span>
+            <span class="review-count">· Sun Group creative night market</span>
+          </div>
+          <div class="resto-hours">📍 Sunset Town · 🕐 4pm–midnight daily</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>⭐ Friend recommended.</strong> Vietnam's first creative seaside night market. Street food to semi-upscale. Right after Kiss Bridge walk. Opens at 4pm — good for an early dinner before the 9pm show.
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">5</div>
+        <div class="resto-info">
+          <h4>Ocean Club — Regent Phu Quoc</h4>
+          <div class="resto-type">🌊 Mediterranean · Beachfront · Upscale</div>
+          <div class="resto-review-row">
+            <span class="review-score">5.0</span>
+            <span class="stars">★★★★★</span>
+            <span class="review-count">· Trip.com · #23 top restaurant Phu Quoc</span>
+          </div>
+          <div class="resto-hours">📍 Bãi Trường · TableCheck recommended · ~200k VND taxi/way</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>⭐ Friend recommended.</strong> Balearic-inspired beachfront venue at the Regent. Mediterranean cuisine, rum cocktails, infinity pool views. A newer, worth-it experience. Make a reservation for sunset dinner.
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">6</div>
+        <div class="resto-info">
+          <h4>Premier Residences Buffet</h4>
+          <div class="resto-type">🍽️ Buffet · Near Bãi Khem · All-day</div>
+          <div class="resto-review-row">
+            <span class="rating-src">Accor group · Near Sun Tropical Village</span>
+          </div>
+          <div class="resto-hours">📍 Near Bãi Khem · Accor member discount 30–50%</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Friend recommended for convenience.</strong> All-day buffet near your villa. If you have an Accor card, this is 30–50% off — very good value. Safe option if kids are tired and you want predictable food.
+      </div>
+    </div>
+  </div>
+
+  <!-- Near Movenpick -->
+  <h4 style="font-size:13px;font-weight:600;color:var(--deep-teal);margin:28px 0 14px;padding-bottom:8px;border-bottom:2px solid #ddd;">
+    🍽️ Movenpick Area (Jul 21–24) — Walkable or 5–10 min
+  </h4>
+  <div class="resto-grid">
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">1</div>
+        <div class="resto-info">
+          <h4>Lang Chai Restaurant</h4>
+          <div class="resto-type">🍜 Vietnamese + International · On-site Movenpick</div>
+          <div class="resto-review-row">
+            <span class="review-score">4.6</span>
+            <span class="stars">★★★★½</span>
+            <span class="review-count">· TripAdvisor · 3,227 reviews</span>
+          </div>
+          <div class="resto-hours">📍 Movenpick Villas · ☎ +84 297 269 9999 · Open daily</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Best convenience pick.</strong> Inside Movenpick — no travel needed. High quality, large menu, kids-friendly. Clean, yummy, good variety. Go for lunch on move day (Day 5) when you don't want to deal with logistics.
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">2</div>
+        <div class="resto-info">
+          <h4>Aura Beach Club</h4>
+          <div class="resto-type">🍹 Tapas · Cocktails · Sunset views · Happy Hour 5–7pm</div>
+          <div class="resto-review-row">
+            <span class="review-score">4.9</span>
+            <span class="stars">★★★★★</span>
+            <span class="review-count">· TripAdvisor · 15 reviews</span>
+          </div>
+          <div class="resto-hours">📍 Ong Lang Beach · Part of Movenpick/Accor · Open daily</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Best beach club on Ong Lang.</strong> Live music, buy-one-get-one cocktail deals, romantic beach dinners. Walkable from Movenpick villas. Happy hour 5–7pm — perfect for parents. Kids welcome.
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">3</div>
+        <div class="resto-info">
+          <h4>S Beach Club</h4>
+          <div class="resto-type">🍕 Pizza · Seafood · Casual beachfront</div>
+          <div class="resto-review-row">
+            <span class="review-score">—</span>
+            <span class="rating-src">Known Ong Lang institution · Very popular</span>
+          </div>
+          <div class="resto-hours">📍 Ong Lang Beach · Open daily · Walkable from Movenpick</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Casual and easy.</strong> Pizza, seafood, relaxed atmosphere. Right on the beach — kids can swim while parents eat. Good fallback if Aura is busy.
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">4</div>
+        <div class="resto-info">
+          <h4>Mango Bay Restaurant</h4>
+          <div class="resto-type">🌿 Organic · Sustainable · Upscale eco-resort</div>
+          <div class="resto-review-row">
+            <span class="review-score">4.4</span>
+            <span class="stars">★★★★½</span>
+            <span class="review-count">· TripAdvisor · 1,554 reviews</span>
+          </div>
+          <div class="resto-hours">📍 Ong Lang Beach · Open daily 10am–10pm</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Farewell dinner pick (Day 7).</strong> Organic, sustainably sourced Vietnamese cuisine in a beautiful outdoor setting. Kayaks available. TripAdvisor 4.4 · 1,554 reviews — a consistent performer. Worth dressing up for.
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <div class="resto-header">
+        <div class="resto-num">5</div>
+        <div class="resto-info">
+          <h4>Grand World Night Market</h4>
+          <div class="resto-type">🌙 Night market · Near Movenpick · Opens 5pm</div>
+          <div class="resto-review-row">
+            <span class="stars">★★★★☆</span>
+            <span class="review-count">· Newer, cleaner than Bach Dang market</span>
+          </div>
+          <div class="resto-hours">📍 Grand World · 🕐 Opens 5pm · 5 min from Movenpick</div>
+        </div>
+      </div>
+      <div class="resto-footer">
+        <strong>Easy Safari recovery dinner (Day 6).</strong> No long drive needed. Opens at 5pm. Cleaner and less touristy than the main Bach Dang market. Great for a low-key evening after the Safari day.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="section" id="tips">
+  <div class="section-header">
+    <div class="section-eyebrow">Family Notes</div>
+    <div class="section-title">Practical Tips</div>
+  </div>
+
+  <div class="tips-grid">
+    <div class="tips-col">
+      <h4>🚗 Transport</h4>
+      <ul>
+        <li><strong>Ms. Ngoan</strong> — +84 908 954 195 · WhatsApp · Deliver to P909</li>
+        <li>Scooter: ~25,000–40,000 VND/day. Car hire also available.</li>
+        <li>Grab app — like Uber. For 9 people you'll need 2 Grabs.</li>
+        <li>Pre-book airport transfers via Klook to lock in price.</li>
+      </ul>
+      <h4 style="margin-top:24px;">🧳 Pack for July</h4>
+      <ul>
+        <li>Rain ponchos × 6 — July downpours come fast</li>
+        <li>Reef-safe SPF50+ sunscreen (buy in HK — expensive in Phu Quoc)</li>
+        <li>Quick-dry clothes (NOT cotton for activities)</li>
+        <li>Mosquito repellent (deet-free for kids)</li>
+        <li>Light long-sleeve — cable car is breezy + AC</li>
+        <li>Water shoes — for Aquatopia and rocky areas</li>
+        <li>Power bank — long days out drain phones</li>
+        <li>Reusable water bottles × 5</li>
+      </ul>
+    </div>
+    <div class="tips-col">
+      <h4>💰 Money</h4>
+      <ul>
+        <li>VND — USD 1 ≈ VND 25,000 · HKD 1 ≈ 3,000 VND</li>
+        <li>Cards accepted at resorts/restaurants</li>
+        <li>Cash for markets, street food, tips</li>
+        <li>Budget: ~15–20M VND cash for 9 people over 8 days</li>
+      </ul>
+      <h4 style="margin-top:24px;">🏥 Health & Safety</h4>
+      <ul>
+        <li>Phu Quoc General Hospital: +84 297 386 1111</li>
+        <li>International Clinic: +84 297 626 9898</li>
+        <li>Police: 113 · Fire: 114 · Ambulance: 115</li>
+        <li>Movenpick: +84 297 269 9999</li>
+        <li>Buy travel insurance before departure</li>
+      </ul>
+      <h4 style="margin-top:24px;">🌦️ July Weather Plan</h4>
+      <ul>
+        <li>Mornings (7–11am): Beach, Safari, cable car</li>
+        <li>Midday (11am–3pm): Pool, villa, AC restaurants</li>
+        <li>Afternoons: Shows, sunset activities, markets</li>
+        <li>Rain backup: Grand World mall + cinema</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <h2>8 Days. 30° Water.<br>VinSafari. Kiss Bridge.<br>No VinWonder.</h2>
+  <p>Phu Quoc · July 17–24, 2026</p>
+</div>
+
+<script>
+  // Nav active tab
+  function setActive(e) {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    e.target.classList.add('active');
+  }
+
+  // Scroll spy
+  const sections = document.querySelectorAll('div[id]');
+  const navTabs = document.querySelectorAll('.nav-tab');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 80;
+      if (scrollY >= top) current = section.getAttribute('id');
+    });
+    navTabs.forEach(tab => {
+      tab.classList.remove('active');
+      if (tab.getAttribute('href') === '#' + current) tab.classList.add('active');
+    });
+  });
+
+  // Register service worker for PWA
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+</script>
+</body>
+</html>

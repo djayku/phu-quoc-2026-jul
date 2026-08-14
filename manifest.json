@@ -1,0 +1,18 @@
+{
+  "name": "Phu Quoc 2026",
+  "short_name": "Phu Quoc",
+  "description": "Family trip itinerary — July 17–24, 2026",
+  "start_url": "/phu-quoc-trip/index.html",
+  "display": "standalone",
+  "background_color": "#0D3B4C",
+  "theme_color": "#0D3B4C",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/phuquoc_aerial_v2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
